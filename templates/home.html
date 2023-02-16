@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+  </head>
+  <body>
+    <div class="container" style="text-align: center">
+      {% include 'navbar.html' %}
+
+      <h1>This is our Home website</h1>
+
+      <form action="/Home/" method="POST">
+        {% csrf_token %}
+        <input type="checkbox" value="True" name="check">
+        <button>Send</button>
+      </form>  
+      
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid natus
+        vero rerum eaque cum, adipisci dolor nam impedit! Magni debitis maiores
+        earum quo voluptatem consectetur odit, officia, vel quam delectus totam
+        illo! Aut assumenda, eos eius molestiae dolorum consequatur aspernatur
+        dolorem sapiente delectus molestias adipisci repellat suscipit laborum!
+        Laudantium, dolore?
+      </p>
+      <button>Home us</button>
+
+      <!-- accessing dynamic values -->
+
+    {% if isActive %}
+     <div>
+        <h2>Today date is: {{date}}</h2>
+        <h3>All the data is displayed here: {{name}}}</h3>
+  
+        <hr>
+        <h1>Student details</h1>
+        <h2>Student name: {{student_data.student_name}}</h2>
+        <h3>Student college: {{student_data.student_college}}</h3>
+        <h4>Student city: {{student_data.student_city}}</h4>
+     </div>
+
+
+
+    {% else %}
+
+    <h1>isActive is False. Turn it true</h1>
+
+    {% endif %}
+
+    <hr>
+
+    <h1>FAvourite Programs</h1>
+
+    {% for p in list_of_programs %}
+
+     <h3>{{p}}</h3>
+
+    {% endfor %}
+  
+    </div>
+  </body>
+</html>
